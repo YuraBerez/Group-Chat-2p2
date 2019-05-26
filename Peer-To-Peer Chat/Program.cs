@@ -16,7 +16,7 @@ namespace Peer_To_Peer_Chat
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UserNameForm());
+            Application.Run(new ChatForm());
         }
     }
 }

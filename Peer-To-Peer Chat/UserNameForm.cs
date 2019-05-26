@@ -8,6 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Net;
+using System.Net.Sockets;
+using System.Threading;
+
+
 namespace Peer_To_Peer_Chat
 {
     public partial class UserNameForm : Form
@@ -26,6 +31,7 @@ namespace Peer_To_Peer_Chat
             get { return userName; }
         }
 
+        delegate void AddMessage(string message);
 
         void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
         {
