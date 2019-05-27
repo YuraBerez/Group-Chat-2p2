@@ -1,0 +1,27 @@
+F:\desktop\code\Visual Studio 2010\Projects\GroupChat\GroupChat\bin\Release\GroupChat.exe
+F:\desktop\code\Visual Studio 2010\Projects\GroupChat\GroupChat\bin\Release\GroupChat.pdb
+F:\desktop\code\Visual Studio 2010\Projects\GroupChat\GroupChat\obj\x86\Release\GroupChat.ChatRoom.resources
+F:\desktop\code\Visual Studio 2010\Projects\GroupChat\GroupChat\obj\x86\Release\GroupChat.Transmission.resources
+F:\desktop\code\Visual Studio 2010\Projects\GroupChat\GroupChat\obj\x86\Release\GroupChat.Properties.Resources.resources
+F:\desktop\code\Visual Studio 2010\Projects\GroupChat\GroupChat\obj\x86\Release\GroupChat.csproj.GenerateResource.Cache
+F:\desktop\code\Visual Studio 2010\Projects\GroupChat\GroupChat\obj\x86\Release\GroupChat.exe
+F:\desktop\code\Visual Studio 2010\Projects\GroupChat\GroupChat\obj\x86\Release\GroupChat.pdb
+F:\lan\Documents\Visual Studio 2010\Projects\GroupChat\GroupChat\obj\x86\Release\GroupChat.exe
+F:\lan\Documents\Visual Studio 2010\Projects\GroupChat\GroupChat\obj\x86\Release\GroupChat.pdb
+F:\lan\Documents\Visual Studio 2010\Projects\GroupChat\GroupChat\obj\x86\Release\GroupChat.csprojResolveAssemblyReference.cache
+F:\lan\Documents\Visual Studio 2010\Projects\GroupChat\GroupChat\obj\x86\Release\GroupChat.ChatRoom.resources
+F:\lan\Documents\Visual Studio 2010\Projects\GroupChat\GroupChat\obj\x86\Release\GroupChat.Transmission.resources
+F:\lan\Documents\Visual Studio 2010\Projects\GroupChat\GroupChat\obj\x86\Release\GroupChat.Properties.Resources.resources
+F:\lan\Documents\Visual Studio 2010\Projects\GroupChat\GroupChat\obj\x86\Release\GroupChat.csproj.GenerateResource.Cache
+F:\lan\Documents\Visual Studio 2010\Projects\GroupChat\GroupChat\bin\Release\GroupChat.exe
+F:\lan\Documents\Visual Studio 2010\Projects\GroupChat\GroupChat\bin\Release\GroupChat.pdb
+C:\Users\User\Documents\GitHub\GroupChat\GroupChat\bin\Release\GroupChat.exe
+C:\Users\User\Documents\GitHub\GroupChat\GroupChat\bin\Release\GroupChat.pdb
+C:\Users\User\Documents\GitHub\GroupChat\GroupChat\obj\x86\Release\GroupChat.csprojAssemblyReference.cache
+C:\Users\User\Documents\GitHub\GroupChat\GroupChat\obj\x86\Release\GroupChat.ChatRoom.resources
+C:\Users\User\Documents\GitHub\GroupChat\GroupChat\obj\x86\Release\GroupChat.Transmission.resources
+C:\Users\User\Documents\GitHub\GroupChat\GroupChat\obj\x86\Release\GroupChat.Properties.Resources.resources
+C:\Users\User\Documents\GitHub\GroupChat\GroupChat\obj\x86\Release\GroupChat.csproj.GenerateResource.cache
+C:\Users\User\Documents\GitHub\GroupChat\GroupChat\obj\x86\Release\GroupChat.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\GitHub\GroupChat\GroupChat\obj\x86\Release\GroupChat.exe
+C:\Users\User\Documents\GitHub\GroupChat\GroupChat\obj\x86\Release\GroupChat.pdb
