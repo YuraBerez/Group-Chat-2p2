@@ -19,92 +19,114 @@ namespace Peer_To_Peer_Chat
 
         string userName;
 
-        const int port = 4000;
+        const int port = 5500;
         const string broadcastAddress = "127.0.0.1";
-
-        UdpClient receivingClient;
-        UdpClient sendingClient; 
-
-        Thread receivingThread;
 
         public ChatForm()
         {
+            using (UserNameForm loginForm = new UserNameForm())
+            {
+                try
+                {
+                    loginForm.ShowDialog();
+
+                    if (loginForm.UserName == "")
+                        this.Close();
+                    else
+                    {
+                        userName = loginForm.UserName;
+                        loginForm.Dispose();
+                        this.Show();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+
             InitializeComponent();
+            this.Text += " (" + userName + ")";
             this.Load += new EventHandler(ChatForm_Load);
             btnSend.Click += new EventHandler(btnSend_Click);
         }
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            txtMessage.Text = txtMessage.Text.TrimEnd();
+            try
+            { 
+                IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(broadcastAddress), Convert.ToInt32(port));
 
-            if (!string.IsNullOrEmpty(txtMessage.Text))
+                Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                socket.Connect(ipPoint);
+                byte[] data = Encoding.Unicode.GetBytes(txtMessage.Text);
+                socket.Send(data);
+
+                socket.Shutdown(SocketShutdown.Both);
+                data = new byte[256]; 
+                StringBuilder builder = new StringBuilder();
+                int bytes = 0; 
+
+                do
+                {
+                    bytes = socket.Receive(data, data.Length, 0);
+                    builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
+                }
+                while (socket.Available > 0);
+                txtHistoryMessage.Text += ">>>  \n";
+                socket.Close();
+            }
+            catch (Exception ex)
             {
-                string toSend = userName + ":\n" + txtMessage.Text;
-                byte[] data = Encoding.ASCII.GetBytes(toSend);
-                sendingClient.Send(data, data.Length);
-                txtMessage.Text = "";
+                MessageBox.Show(ex.Message);
             }
 
+            txtHistoryMessage.Text += (userName + ": " + txtMessage.Text) + "\n";
+            txtMessage.Text = "";
             txtMessage.Focus();
         }
 
         private void ChatForm_Load(object sender, EventArgs e)
         {
-            this.Hide();
-
-            using (UserNameForm loginForm = new UserNameForm())
-            {
-                loginForm.ShowDialog();
-
-                if (loginForm.UserName == "")
-                    this.Close();
-                else
-                {
-                    userName = loginForm.UserName;
-                    this.Show();
-                }
-            }
-
             txtMessage.Focus();
 
             InitializeSender();
-            InitializeReceiver();
         }
 
         private void InitializeSender()
         {
-            sendingClient = new UdpClient(broadcastAddress, port);
-            sendingClient.EnableBroadcast = true;
-        }
+            IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(broadcastAddress), port);
 
-        private void InitializeReceiver()
-        {
-            receivingClient = new UdpClient(port);
-
-            ThreadStart start = new ThreadStart(Receiver);
-            receivingThread = new Thread(start);
-            receivingThread.IsBackground = true;
-            receivingThread.Start();
-        }
-
-        private void Receiver()
-        {
-            IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, port);
-            AddMessage messageDelegate = MessageReceived;
-
-            while (true)
+            Socket listenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            try
             {
-                byte[] data = receivingClient.Receive(ref endPoint);
-                string message = Encoding.ASCII.GetString(data);
-                Invoke(messageDelegate, message);
+                listenSocket.Bind(ipPoint);
+
+                listenSocket.Listen(10);
+
+                while (true)
+                {
+                    Socket handler = listenSocket.Accept();
+
+                    StringBuilder builder = new StringBuilder();
+                    int bytes = 0;
+                    byte[] data = new byte[256];
+
+                    do
+                    {
+                        bytes = handler.Receive(data);
+                        builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
+                    }
+                    while (handler.Available > 0);
+                    txtHistoryMessage.Text += (userName + ": " + builder.ToString()) + "\n";
+                    handler.Shutdown(SocketShutdown.Both);
+                    handler.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
-
-        private void MessageReceived(string message)
-        {
-            txtHistoryMessage.Text += message + "\n";
-        }
-
     }
 }

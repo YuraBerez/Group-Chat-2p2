@@ -40,6 +40,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtHistoryMessage.Location = new System.Drawing.Point(12, 12);
             this.txtHistoryMessage.Name = "txtHistoryMessage";
+            this.txtHistoryMessage.ReadOnly = true;
             this.txtHistoryMessage.Size = new System.Drawing.Size(776, 406);
             this.txtHistoryMessage.TabIndex = 0;
             this.txtHistoryMessage.Text = "";

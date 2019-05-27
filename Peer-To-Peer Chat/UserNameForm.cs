@@ -35,7 +35,7 @@ namespace Peer_To_Peer_Chat
 
         void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            userName = "";
+            userName = txtUserName.Text;
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -54,7 +54,7 @@ namespace Peer_To_Peer_Chat
 
         private void UserNameForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            userName = "";
+           // userName = "";
         }
     }
 }
